@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Renata Santana\\Documents\\BibliotecaMVC\\BibliotecaMVC.csproj",
-      "projectName": "BibliotecaMVC",
-      "projectPath": "C:\\Users\\Renata Santana\\Documents\\BibliotecaMVC\\BibliotecaMVC.csproj",
+      "projectUniqueName": "C:\\Users\\Renata Santana\\Documents\\LibraTech\\LibraTech.csproj",
+      "projectName": "LibraTech",
+      "projectPath": "C:\\Users\\Renata Santana\\Documents\\LibraTech\\LibraTech.csproj",
       "packagesPath": "C:\\Users\\Renata Santana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Renata Santana\\Documents\\BibliotecaMVC\\obj\\",
+      "outputPath": "C:\\Users\\Renata Santana\\Documents\\LibraTech\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Renata Santana\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using BibliotecaMVC.Models;
+using LibraTech.Models;
 
-namespace BibliotecaMVC.Controllers;
+namespace LibraTech.Controllers;
 
 public class HomeController : Controller
 {

@@ -1,4 +1,4 @@
-namespace BibliotecaMVC.Models;
+namespace LibraTech.Models;
 
 public class ErrorViewModel
 {

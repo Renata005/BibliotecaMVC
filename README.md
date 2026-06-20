@@ -1,4 +1,4 @@
-# BibliotecaMVC
+# LibraTech
 
 Projeto final da disciplina de Desenvolvimento Web.
 

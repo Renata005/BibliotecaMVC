@@ -13,6 +13,7 @@ C:\Users\Renata Santana\Documents\LibraTech\obj\Debug\net8.0\LibraTech.csproj.Co
 C:\Users\Renata Santana\Documents\LibraTech\obj\Debug\net8.0\LibraTech.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Renata Santana\Documents\LibraTech\obj\Debug\net8.0\LibraTech.RazorAssemblyInfo.cache
 C:\Users\Renata Santana\Documents\LibraTech\obj\Debug\net8.0\LibraTech.RazorAssemblyInfo.cs
+C:\Users\Renata Santana\Documents\LibraTech\obj\Debug\net8.0\LibraTech.sourcelink.json
 C:\Users\Renata Santana\Documents\LibraTech\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Renata Santana\Documents\LibraTech\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Renata Santana\Documents\LibraTech\obj\Debug\net8.0\staticwebassets\msbuild.LibraTech.Microsoft.AspNetCore.StaticWebAssets.props
