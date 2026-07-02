@@ -4,118 +4,158 @@
     ViewData["Title"] = "Empréstimos";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4">
+<div class="container mt-4">
 
-    <h1 class="fw-bold">
-        📖 Gerenciamento de Empréstimos
-    </h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-    <a asp-action="Create" class="btn btn-primary btn-lg">
-        + Novo Empréstimo
-    </a>
+        <h2>📖 Empréstimos</h2>
 
-</div>
+        <a asp-action="Create" class="btn btn-primary">
+            + Novo Empréstimo
+        </a>
 
-<table class="table table-hover shadow rounded overflow-hidden">
+    </div>
 
-    <thead class="table-dark">
+    <div class="card shadow">
 
-        <tr>
+        <div class="card-body">
 
-            <th>Livro</th>
+            <input class="form-control mb-4"
+                   id="pesquisaEmprestimo"
+                   type="text"
+                   placeholder="🔍 Pesquisar livro ou usuário..." />
 
-            <th>Usuário</th>
+            <table class="table table-hover align-middle" id="tabelaEmprestimos">
 
-            <th>Data Empréstimo</th>
+                <thead class="table-primary">
 
-            <th>Data Devolução</th>
+                    <tr>
 
-            <th>Situação</th>
+                        <th>Livro</th>
 
-            <th style="width:230px;">Ações</th>
+                        <th>Usuário</th>
 
-        </tr>
+                        <th>Empréstimo</th>
 
-    </thead>
+                        <th>Devolução</th>
 
-    <tbody>
+                        <th>Status</th>
+
+                        <th width="220">Ações</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
 
 @foreach (var item in Model)
 {
-        <tr>
+                    <tr>
 
-            <td>
+                        <td>
 
-                📚 @item.Livro?.Titulo
+                            <strong>@item.Livro?.Titulo</strong>
 
-            </td>
+                        </td>
 
-            <td>
+                        <td>
 
-                👤 @item.Usuario?.Nome
+                            @item.Usuario?.Nome
 
-            </td>
+                        </td>
 
-            <td>
+                        <td>
 
-                @item.DataEmprestimo.ToString("dd/MM/yyyy")
+                            @item.DataEmprestimo.ToString("dd/MM/yyyy")
 
-            </td>
+                        </td>
 
-            <td>
+                        <td>
 
-                @item.DataDevolucao.ToString("dd/MM/yyyy")
+                            @item.DataDevolucao.ToString("dd/MM/yyyy")
 
-            </td>
+                        </td>
 
-            <td>
+                        <td>
 
-                @if (item.Devolvido)
-                {
-                    <span class="badge bg-success">
-                        Devolvido
-                    </span>
-                }
-                else
-                {
-                    <span class="badge bg-warning text-dark">
-                        Emprestado
-                    </span>
-                }
-
-            </td>
-
-            <td>
-
-                <a asp-action="Edit"
-                   asp-route-id="@item.Id"
-                   class="btn btn-warning btn-sm">
-
-                    Editar
-
-                </a>
-
-                <a asp-action="Details"
-                   asp-route-id="@item.Id"
-                   class="btn btn-info btn-sm text-white">
-
-                    Detalhes
-
-                </a>
-
-                <a asp-action="Delete"
-                   asp-route-id="@item.Id"
-                   class="btn btn-danger btn-sm">
-
-                    Excluir
-
-                </a>
-
-            </td>
-
-        </tr>
+@if(item.Devolvido)
+{
+                            <span class="badge bg-success">
+                                ✔ Devolvido
+                            </span>
+}
+else if(item.DataDevolucao < DateTime.Today)
+{
+                            <span class="badge bg-danger">
+                                ⚠ Atrasado
+                            </span>
+}
+else
+{
+                            <span class="badge bg-warning text-dark">
+                                📖 Em andamento
+                            </span>
 }
 
-    </tbody>
+                        </td>
 
-</table>
+                        <td>
+
+                            <a asp-action="Details"
+                               asp-route-id="@item.Id"
+                               class="btn btn-info btn-sm text-white">
+                                Detalhes
+                            </a>
+
+                            <a asp-action="Edit"
+                               asp-route-id="@item.Id"
+                               class="btn btn-warning btn-sm">
+                                Editar
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@item.Id"
+                               class="btn btn-danger btn-sm">
+                                Excluir
+                            </a>
+
+                        </td>
+
+                    </tr>
+}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+
+<script>
+
+document.getElementById("pesquisaEmprestimo").addEventListener("keyup", function(){
+
+    let valor = this.value.toLowerCase();
+
+    let linhas = document.querySelectorAll("#tabelaEmprestimos tbody tr");
+
+    linhas.forEach(function(linha){
+
+        linha.style.display =
+            linha.innerText.toLowerCase().includes(valor)
+            ? ""
+            : "none";
+
+    });
+
+});
+
+</script>
+
+}

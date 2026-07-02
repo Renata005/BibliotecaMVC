@@ -4,94 +4,129 @@
     ViewData["Title"] = "Categorias";
 }
 
-<div class="container mt-4">
+<div class="d-flex justify-content-between align-items-center mb-4">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="fw-bold">
+        📂 Categorias
+    </h1>
 
-        <h2>📂 Gerenciamento de Categorias</h2>
+    <a asp-action="Create" class="btn btn-primary">
+        + Nova Categoria
+    </a>
 
-        <a asp-action="Create" class="btn btn-primary">
-            + Nova Categoria
-        </a>
+</div>
 
-    </div>
+<div class="card shadow">
 
-    <div class="card shadow">
+    <div class="card-body">
 
-        <div class="card-body">
+        <div class="mb-3">
 
-            <table class="table table-hover align-middle">
-
-                <thead class="table-dark">
-
-                    <tr>
-                        <th>Nome</th>
-                        <th>Descrição</th>
-                        <th width="220">Ações</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    @if (Model.Any())
-                    {
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-
-                                <td>
-                                    <strong>@item.Nome</strong>
-                                </td>
-
-                                <td>
-                                    @item.Descricao
-                                </td>
-
-                                <td>
-
-                                    <a asp-action="Edit"
-                                       asp-route-id="@item.Id"
-                                       class="btn btn-warning btn-sm">
-                                        Editar
-                                    </a>
-
-                                    <a asp-action="Details"
-                                       asp-route-id="@item.Id"
-                                       class="btn btn-info btn-sm text-white">
-                                        Detalhes
-                                    </a>
-
-                                    <a asp-action="Delete"
-                                       asp-route-id="@item.Id"
-                                       class="btn btn-danger btn-sm">
-                                        Excluir
-                                    </a>
-
-                                </td>
-
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <tr>
-
-                            <td colspan="3" class="text-center text-muted py-4">
-
-                                Nenhuma categoria cadastrada.
-
-                            </td>
-
-                        </tr>
-                    }
-
-                </tbody>
-
-            </table>
+            <input
+                type="text"
+                id="pesquisaCategoria"
+                class="form-control"
+                placeholder="🔍 Pesquisar categoria..." />
 
         </div>
+
+        <table class="table table-hover align-middle" id="tabelaCategorias">
+
+            <thead class="table-primary">
+
+                <tr>
+
+                    <th>Nome</th>
+
+                    <th>Descrição</th>
+
+                    <th width="220">Ações</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+
+                            <strong>@item.Nome</strong>
+
+                        </td>
+
+                        <td>
+
+                            @item.Descricao
+
+                        </td>
+
+                        <td>
+
+                            <a asp-action="Details"
+                               asp-route-id="@item.Id"
+                               class="btn btn-info btn-sm text-white">
+
+                                Detalhes
+
+                            </a>
+
+                            <a asp-action="Edit"
+                               asp-route-id="@item.Id"
+                               class="btn btn-warning btn-sm">
+
+                                Editar
+
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@item.Id"
+                               class="btn btn-danger btn-sm">
+
+                                Excluir
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
 
     </div>
 
 </div>
+
+@section Scripts{
+
+<script>
+
+document
+.getElementById("pesquisaCategoria")
+.addEventListener("keyup", function(){
+
+    let filtro = this.value.toLowerCase();
+
+    let linhas =
+    document.querySelectorAll("#tabelaCategorias tbody tr");
+
+    linhas.forEach(function(linha){
+
+        linha.style.display =
+        linha.innerText.toLowerCase().includes(filtro)
+        ? ""
+        : "none";
+
+    });
+
+});
+
+</script>
+
+}

@@ -98,6 +98,20 @@
 
     </div>
 
+    <div class="card shadow mb-5">
+
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">📊 Livros por Categoria</h4>
+    </div>
+
+    <div class="card-body">
+
+        <canvas id="graficoCategorias"></canvas>
+
+    </div>
+
+</div>
+
     <div class="row">
 
         <div class="col-md-4 mb-4">
@@ -187,3 +201,33 @@
     </div>
 
 </div>
+
+@section Scripts{
+
+<script>
+
+const ctx = document.getElementById('graficoCategorias');
+
+new Chart(ctx, {
+
+    type: 'bar',
+
+    data: {
+
+        labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Categorias)),
+
+        datasets: [{
+
+            label: 'Quantidade de Livros',
+
+            data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.QuantidadePorCategoria))
+
+        }]
+
+    }
+
+});
+
+</script>
+
+}

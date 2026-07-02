@@ -20,24 +20,37 @@ public class HomeController : Controller
     }
 
     public IActionResult Index()
+{
+    var dashboard = new DashboardViewModel
     {
-        DashboardViewModel dashboard = new DashboardViewModel
-        {
-            TotalLivros = _context.Livros.Count(),
+        TotalLivros = _context.Livros.Count(),
 
-            TotalUsuarios = _context.Usuarios.Count(),
+        TotalUsuarios = _context.Usuarios.Count(),
 
-            EmprestimosAtivos = _context.Emprestimos.Count(e => !e.Devolvido),
+        EmprestimosAtivos = _context.Emprestimos.Count(e => !e.Devolvido),
 
-            LivrosDisponiveis =
-                _context.Livros.Count()
-                -
-                _context.Emprestimos.Count(e => !e.Devolvido)
-        };
+        LivrosDisponiveis =
+            _context.Livros.Count()
+            - _context.Emprestimos.Count(e => !e.Devolvido)
+    };
 
-        return View(dashboard);
+    var categorias = _context.Categorias.ToList();
+
+    foreach (var categoria in categorias)
+    {
+        dashboard.Categorias.Add(categoria.Nome);
+
+        dashboard.QuantidadePorCategoria.Add(
+            _context.Livros.Count(l => l.CategoriaId == categoria.Id)
+        );
     }
 
+    return View(dashboard);
+}
+    public IActionResult Contato()
+    {
+    return View();
+    }
     public IActionResult Privacy()
     {
         return View();

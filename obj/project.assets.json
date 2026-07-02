@@ -7917,11 +7917,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Renata Santana\\Documents\\LibraTech\\LibraTech.csproj",
+      "projectUniqueName": "C:\\Projetos\\LibraTech\\LibraTech.csproj",
       "projectName": "LibraTech",
-      "projectPath": "C:\\Users\\Renata Santana\\Documents\\LibraTech\\LibraTech.csproj",
+      "projectPath": "C:\\Projetos\\LibraTech\\LibraTech.csproj",
       "packagesPath": "C:\\Users\\Renata Santana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Renata Santana\\Documents\\LibraTech\\obj\\",
+      "outputPath": "C:\\Projetos\\LibraTech\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Renata Santana\\AppData\\Roaming\\NuGet\\NuGet.Config"

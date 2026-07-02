@@ -1,48 +1,119 @@
 @model LibraTech.Models.Usuario
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cadastrar Usuário";
 }
 
-<h1>Create</h1>
+<div class="container mt-4">
 
-<h4>Usuario</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CPF" class="control-label"></label>
-                <input asp-for="CPF" class="form-control" />
-                <span asp-validation-for="CPF" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefone" class="control-label"></label>
-                <input asp-for="Telefone" class="form-control" />
-                <span asp-validation-for="Telefone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h3 class="mb-0">
+                👤 Cadastrar Novo Usuário
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Create">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="Nome" class="form-label"></label>
+
+                        <input asp-for="Nome" class="form-control" />
+
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="CPF" class="form-label"></label>
+
+                        <input asp-for="CPF"
+                            class="form-control"
+                            placeholder="000.000.000-00"
+                            maxlength="14" />
+
+                        <span asp-validation-for="CPF" class="text-danger"></span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="Telefone" class="form-label"></label>
+
+                        <input asp-for="Telefone"
+                            class="form-control"
+                            placeholder="(61) 99999-9999"
+                            maxlength="15" />
+
+                        <span asp-validation-for="Telefone" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="Email" class="form-label"></label>
+
+                        <input asp-for="Email" class="form-control" />
+
+                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <button type="submit" class="btn btn-success">
+                    💾 Salvar Usuário
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    Voltar
+                </a>
+
+            </form>
+
+        </div>
+
     </div>
+
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<script src="https://unpkg.com/imask"></script>
+
+<script>
+var cpf = document.querySelector('[name="CPF"]');
+if (cpf) {
+    IMask(cpf, {
+        mask: '000.000.000-00'
+    });
+}
+
+var telefone = document.querySelector('[name="Telefone"]');
+if (telefone) {
+    IMask(telefone, {
+        mask: '(00) 00000-0000'
+    });
+}
+</script>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

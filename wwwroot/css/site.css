@@ -1,25 +1,35 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
+/* ===== Layout ===== */
 
 body {
-  margin-bottom: 60px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
+
+main {
+    flex: 1;
+}
+
+/* ===== Hero ===== */
 
 .hero {
     display: flex;
@@ -62,40 +72,42 @@ body {
     width: 320px;
 }
 
-.feature-card{
-    display:block;
-    background:#fff;
-    border-radius:15px;
-    padding:30px;
-    text-align:center;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
-    transition:.3s;
-    height:100%;
+/* ===== Cards ===== */
+
+.feature-card {
+    display: block;
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    transition: .3s;
+    height: 100%;
 }
 
-.feature-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 15px 30px rgba(0,0,0,.15);
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,.15);
 }
 
-.feature-card .icon{
-    font-size:50px;
-    margin-bottom:15px;
+.feature-card .icon {
+    font-size: 50px;
+    margin-bottom: 15px;
 }
 
-.feature-card h3{
-    font-weight:bold;
-    margin-bottom:15px;
+.feature-card h3 {
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
-.feature-card p{
-    min-height:60px;
+.feature-card p {
+    min-height: 60px;
 }
 
-/* ===== Navbar LibraTech ===== */
+/* ===== Navbar ===== */
 
 .navbar {
-    background: #1E3A8A !important;
+    background: linear-gradient(90deg, #356AC3, #2F5FB3);
 }
 
 .navbar-brand {
@@ -115,10 +127,13 @@ body {
     background: rgba(255,255,255,.15);
 }
 
+/* ===== Footer ===== */
+
 footer {
-    background: #1E3A8A;
+    background: linear-gradient(90deg, #356AC3, #2F5FB3);
     color: white !important;
     padding: 15px;
+    margin-top: auto;
 }
 
 footer a {

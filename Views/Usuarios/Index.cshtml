@@ -4,77 +4,142 @@
     ViewData["Title"] = "Usuários";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4">
+<div class="container mt-4">
 
-    <h1 class="fw-bold">
-        👤 Gerenciamento de Usuários
-    </h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-    <a asp-action="Create" class="btn btn-primary btn-lg">
-        + Cadastrar Usuário
-    </a>
+        <h2>👤 Usuários</h2>
 
-</div>
+        <a asp-action="Create" class="btn btn-primary">
+            + Novo Usuário
+        </a>
 
-<table class="table table-hover shadow rounded overflow-hidden">
+    </div>
 
-    <thead class="table-dark">
+    <div class="card shadow">
 
-        <tr>
+        <div class="card-body">
 
-            <th>Nome</th>
+            <input class="form-control mb-4"
+                   id="pesquisaUsuario"
+                   type="text"
+                   placeholder="🔍 Pesquisar usuário..." />
 
-            <th>CPF</th>
+            <table class="table table-hover align-middle" id="tabelaUsuarios">
 
-            <th>Telefone</th>
+                <thead class="table-primary">
 
-            <th>E-mail</th>
+                    <tr>
 
-            <th style="width:220px;">Ações</th>
+                        <th width="70">Perfil</th>
 
-        </tr>
+                        <th>Nome</th>
 
-    </thead>
+                        <th>CPF</th>
 
-    <tbody>
+                        <th>Telefone</th>
+
+                        <th>E-mail</th>
+
+                        <th width="220">Ações</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
 
 @foreach (var item in Model)
 {
-        <tr>
+                    <tr>
 
-            <td>@item.Nome</td>
+                        <td>
 
-            <td>@item.CPF</td>
+                            <img src="https://ui-avatars.com/api/?name=@item.Nome&background=0D6EFD&color=fff&rounded=true&size=48"
+                                 class="rounded-circle" />
 
-            <td>@item.Telefone</td>
+                        </td>
 
-            <td>@item.Email</td>
+                        <td>
 
-            <td>
+                            <strong>@item.Nome</strong>
 
-                <a asp-action="Edit"
-                   asp-route-id="@item.Id"
-                   class="btn btn-warning btn-sm">
-                    Editar
-                </a>
+                        </td>
 
-                <a asp-action="Details"
-                   asp-route-id="@item.Id"
-                   class="btn btn-info btn-sm text-white">
-                    Detalhes
-                </a>
+                        <td>
 
-                <a asp-action="Delete"
-                   asp-route-id="@item.Id"
-                   class="btn btn-danger btn-sm">
-                    Excluir
-                </a>
+                            @item.CPF
 
-            </td>
+                        </td>
 
-        </tr>
+                        <td>
+
+                            @item.Telefone
+
+                        </td>
+
+                        <td>
+
+                            @item.Email
+
+                        </td>
+
+                        <td>
+
+                            <a asp-action="Details"
+                               asp-route-id="@item.Id"
+                               class="btn btn-info btn-sm text-white">
+                                Detalhes
+                            </a>
+
+                            <a asp-action="Edit"
+                               asp-route-id="@item.Id"
+                               class="btn btn-warning btn-sm">
+                                Editar
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@item.Id"
+                               class="btn btn-danger btn-sm">
+                                Excluir
+                            </a>
+
+                        </td>
+
+                    </tr>
 }
 
-    </tbody>
+                </tbody>
 
-</table>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+
+<script>
+
+document.getElementById("pesquisaUsuario").addEventListener("keyup", function(){
+
+    let valor = this.value.toLowerCase();
+
+    let linhas = document.querySelectorAll("#tabelaUsuarios tbody tr");
+
+    linhas.forEach(function(linha){
+
+        linha.style.display =
+            linha.innerText.toLowerCase().includes(valor)
+            ? ""
+            : "none";
+
+    });
+
+});
+
+</script>
+
+}

@@ -1,74 +1,109 @@
 @model LibraTech.Models.Livro
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Livro";
 }
 
-<h1>Edit</h1>
+<div class="container mt-4">
 
-<h4>Livro</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Titulo" class="control-label"></label>
-                <input asp-for="Titulo" class="form-control" />
-                <span asp-validation-for="Titulo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Autor" class="control-label"></label>
-                <input asp-for="Autor" class="form-control" />
-                <span asp-validation-for="Autor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AnoPublicacao" class="control-label"></label>
-                <input asp-for="AnoPublicacao" class="form-control" />
-                <span asp-validation-for="AnoPublicacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ISBN" class="control-label"></label>
-                <input asp-for="ISBN" class="form-control" />
-                <span asp-validation-for="ISBN" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Editora" class="control-label"></label>
-                <input asp-for="Editora" class="form-control" />
-                <span asp-validation-for="Editora" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Quantidade" class="control-label"></label>
-                <input asp-for="Quantidade" class="form-control" />
-                <span asp-validation-for="Quantidade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sinopse" class="control-label"></label>
-                <input asp-for="Sinopse" class="form-control" />
-                <span asp-validation-for="Sinopse" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CapaUrl" class="control-label"></label>
-                <input asp-for="CapaUrl" class="form-control" />
-                <span asp-validation-for="CapaUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoriaId" class="control-label"></label>
-                <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
-                <span asp-validation-for="CategoriaId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">📚 Editar Livro</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit">
+
+                <input type="hidden" asp-for="Id" />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Titulo" class="form-label"></label>
+                        <input asp-for="Titulo" class="form-control" />
+                        <span asp-validation-for="Titulo" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Autor" class="form-label"></label>
+                        <input asp-for="Autor" class="form-control" />
+                        <span asp-validation-for="Autor" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="AnoPublicacao" class="form-label"></label>
+                        <input asp-for="AnoPublicacao" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="ISBN" class="form-label"></label>
+                        <input asp-for="ISBN" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="Quantidade" class="form-label"></label>
+                        <input asp-for="Quantidade" class="form-control" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Editora" class="form-label"></label>
+                        <input asp-for="Editora" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="CategoriaId" class="form-label"></label>
+                        <select asp-for="CategoriaId"
+                                class="form-select"
+                                asp-items="ViewBag.CategoriaId"></select>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="CapaUrl" class="form-label"></label>
+                    <input asp-for="CapaUrl" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Sinopse" class="form-label"></label>
+                    <textarea asp-for="Sinopse"
+                              rows="5"
+                              class="form-control"></textarea>
+                </div>
+
+                <hr />
+
+                <button type="submit" class="btn btn-success">
+                    💾 Salvar Alterações
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+                    Cancelar
+                </a>
+
+            </form>
+
+        </div>
+
     </div>
+
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

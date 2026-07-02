@@ -18,7 +18,6 @@ namespace LibraTech.Controllers
             _context = context;
         }
 
-        // GET: Emprestimos
         public async Task<IActionResult> Index()
         {
             var appDbContext = _context.Emprestimos
@@ -28,7 +27,6 @@ namespace LibraTech.Controllers
             return View(await appDbContext.ToListAsync());
         }
 
-        // GET: Emprestimos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,7 +47,7 @@ namespace LibraTech.Controllers
             return View(emprestimo);
         }
 
-        // GET: Emprestimos/Create
+
         public IActionResult Create()
 {
     var livrosDisponiveis = _context.Livros
@@ -71,7 +69,7 @@ namespace LibraTech.Controllers
     return View();
 }
 
-        // POST: Emprestimos/Create
+        
 [HttpPost]
 [ValidateAntiForgeryToken]
 public async Task<IActionResult> Create([Bind("Id,LivroId,UsuarioId,DataEmprestimo,DataDevolucao,Devolvido")] Emprestimo emprestimo)
@@ -134,7 +132,6 @@ public async Task<IActionResult> Create([Bind("Id,LivroId,UsuarioId,DataEmpresti
     return View(emprestimo);
 }
 
-        // GET: Emprestimos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -164,7 +161,6 @@ public async Task<IActionResult> Create([Bind("Id,LivroId,UsuarioId,DataEmpresti
             return View(emprestimo);
         }
 
-        // POST: Emprestimos/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,LivroId,UsuarioId,DataEmprestimo,DataDevolucao,Devolvido")] Emprestimo emprestimo)
@@ -209,7 +205,6 @@ public async Task<IActionResult> Create([Bind("Id,LivroId,UsuarioId,DataEmpresti
             return View(emprestimo);
         }
 
-        // GET: Emprestimos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -230,7 +225,6 @@ public async Task<IActionResult> Create([Bind("Id,LivroId,UsuarioId,DataEmpresti
             return View(emprestimo);
         }
 
-        // POST: Emprestimos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
